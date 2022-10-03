@@ -1,53 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 $padding: 10px;
 $user-image-size: 80px;
 $transition: 0.5s;
 
 //Colors
-$color-background: #d5f5e3;
-$primary: #8e44ad;
+$color-background: white;
+$primary: #129575;
 
 body {
   background-color: $color-background !important;
 }
 
-.img-link {
-  opacity: 1;
-  transition: $transition;
-
-  &:hover {
-    opacity: 0.5;
-    transition: $transition;
-  }
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold !important;
 }
 
-.no-resize {
-  resize: none;
-}
-
-.title-link {
-  color: $primary;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.user-card {
-  margin: $padding*4 0 $padding*2 0;
-}
-
-.user-image {
-  border-radius: $user-image-size/2;
-  height: $user-image-size;
-  width: $user-image-size;
-
-  &-profile {
-    // margin-top: $padding/2;
-    position: absolute;
-    right: $padding*2;
-    top: ($user-image-size/2) * -1;
-  }
-}
 
 @import "bootstrap";
