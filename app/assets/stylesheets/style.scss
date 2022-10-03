@@ -8,6 +8,9 @@ $transition: 0.5s;
 $color-background: white;
 $primary: #129575;
 
+*{
+  font-family: 'Poppins', sans-serif;
+}
 body {
   background-color: $color-background !important;
 }
