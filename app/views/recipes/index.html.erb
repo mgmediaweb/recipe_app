@@ -14,13 +14,12 @@
     <% @recipes.each do |recipe| %>
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card bg-light card-image">
-          <%= link_to recipe, class: 'position-absolute top-0 start-50 translate-middle' do %>
-            <% if recipe.photo != '' %>
-              <img src="<%= recipe.photo %>" alt="<%=recipe.name %>" class="image-circle image-link" />
-            <% else %>
-              <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle image-link" />
-            <% end %>
-          <% end %>
+          <div class="image-circle position-absolute top-0 start-50 translate-middle" style="background-image: url('<%= show_bg_image(recipe.photo) %>')">
+            <div class="image-link" onclick="location.href='<%=recipe_path(recipe) %>'">
+                <i class="fas fa-eye"></i>
+            </div>
+          </div>
+
           <div class="card-body p-2">
             <h5 class="card-title text-center"><%=recipe.name %></h5>
 

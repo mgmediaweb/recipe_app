@@ -27,6 +27,27 @@ a {
   }
 }
 
+footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  height: 100px;
+  justify-content: center;  
+  width: 100%;
+
+  h5 {
+    font-size: 1.25em;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 h1 {
   font-weight: bold !important;
   font-size: 1.5rem !important;
@@ -67,17 +88,34 @@ h1 {
 }
 
 .image-link {
-  border: solid $silver 4px !important;
+  align-items: center;
+  background-color: rgba($primary, 0.5);
+  color: white;
+  display: flex;
+  font-size: 1.5rem;
+  height: $image-circle-size;
+  justify-content: center;
+  opacity: 0;
+  transition: $transition;
+  user-select: none;
+  width: $image-circle-size;
 
   &:hover {
-    border-color: $primary !important;
+    cursor: pointer;
+    opacity: 1;
+    transition: $transition;
   }
 }
 
 .image-circle {
+  background: $silver url('empty_icon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border: $silver solid 2px;
   border-radius: $image-circle-size/2;
   height: $image-circle-size;
+  overflow: hidden;
   transition: $transition;
   width: $image-circle-size;
 }

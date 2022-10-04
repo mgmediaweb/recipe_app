@@ -2,11 +2,7 @@
   <div class="card-body p-2">
 
     <div class="d-flex align-items-center mb-3">
-      <% if recipe.photo != '' %>
-        <img src="<%= recipe.photo %>" alt="<%=recipe.name %>" class="image-circle" />
-      <% else %>
-        <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle" />
-      <% end %>
+      <div class="image-circle" style="background-image: url('<%= show_bg_image(recipe.photo) %>')" ></div>      
 
       <h3 class="m-0 ms-2 p-0"><%= recipe.name %></h3>     
     </div>
