@@ -32,6 +32,12 @@ h1 {
   font-size: 1.5rem !important;
 }
 
+.display-flex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .btn-href {
   text-decoration: none !important;
 
@@ -61,10 +67,10 @@ h1 {
 }
 
 .image-link {
-  border: solid $silver 2px;
+  border: solid $silver 4px !important;
 
   &:hover {
-    border-color: $primary;
+    border-color: $primary !important;
   }
 }
 

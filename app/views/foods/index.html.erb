@@ -11,25 +11,39 @@
   </div>  
 
   <div class="row">
-    <% @foods.each do |food| %>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="card bg-light card-image">
-          <%= link_to food, class: 'position-absolute top-0 start-50 translate-middle' do %>
-            <img src="<%=image_url('empty_icon.png') %>" alt="@@@" class="image-circle" />
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title text-center">Card title</h5>
-            <p class="text-start m-0 p-0 text-secondary">
-              Time
-            </p>                        
-            <p class="text-start fw-bold m-0 p-0">
-              90
-            </p>            
-            <%= render food %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Food</th>
+            <th scope="col" class="text-center">Quantity</th>
+            <th scope="col" class="text-center">Value</th>
+            <th scope="col" class="text-center col-action">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%=food.name %></td>
+              <td class="text-center"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+              <td class="text-end"><%=number_to_currency(food.price, :unit => "$") %></td>
+              <td class="col-action display-flex">
+                <%= link_to edit_food_path(food), class: 'btn btn-sm btn-secondary', role: 'button' do %>
+                  <i class="fas fa-pen" title="Edit"></i>
+                <% end %>
+
+                <%= button_to food_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light ms-2'} do %>
+                  <i class="fas fa-trash-alt" title="Delete"></i>
+                <% end %>                
+              </td>
+            </tr>
+          <% end %>              
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 

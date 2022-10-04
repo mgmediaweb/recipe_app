@@ -18,7 +18,7 @@
             <% if recipe.photo != '' %>
               <img src="<%= recipe.photo %>" alt="<%=recipe.name %>" class="image-circle image-link" />
             <% else %>
-              <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle" />
+              <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle image-link" />
             <% end %>
           <% end %>
           <div class="card-body p-2">
@@ -31,8 +31,9 @@
                   <%=recipe.cooking_time %>
                 </p>              
               </div>
-              <%= link_to '#', class: 'icon-link' do %>
-                <i class="fas fa-star"></i>
+
+              <%= button_to recipe_path(recipe), { method: :delete, data: { turbo: false }, class: 'btn btn-white text-danger'} do %>
+                <i class="fas fa-trash-alt" title="Delete"></i>
               <% end %>
             </div>
           </div>
