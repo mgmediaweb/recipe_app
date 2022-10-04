@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_025418) do
     t.string "name"
     t.string "measure_unit"
     t.float "price", default: 0.0
-    t.integer "quantity", default: 0
+    t.float "quantity", default: 0.0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

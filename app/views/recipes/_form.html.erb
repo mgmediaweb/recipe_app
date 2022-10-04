@@ -21,12 +21,12 @@
 
     <div class="col-12 col-md-6 mb-3">
       <%= form.label :preparation_time, class: 'form-label' %>
-      <%= form.number_field :preparation_time, class: 'form-control' %>
+      <%= form.text_field :preparation_time, pattern: '[0-9]+', class: 'form-control' %>
     </div>
 
     <div class="col-12 col-md-6 mb-3">
       <%= form.label :cooking_time, class: 'form-label' %>
-      <%= form.number_field :cooking_time, class: 'form-control' %>
+      <%= form.text_field :cooking_time, pattern: '[0-9]+', class: 'form-control' %>
     </div>
 
     <div class="col-12 mb-3">

@@ -63,12 +63,12 @@
 
     <div class="col-12 col-md-3 mb-3">
       <%= form.label :quantity, class: 'form-label' %>
-      <%= form.number_field :quantity, class: 'form-control' %>
+      <%= form.text_field :quantity, class: 'form-control', pattern: '[0-9.]+', required: true %>
     </div>    
 
     <div class="col-12 col-md-3 mb-3">
       <%= form.label :price, class: 'form-label' %>
-      <%= form.text_field :price, class: 'form-control', required: true %>
+      <%= form.text_field :price, class: 'form-control', pattern: '[0-9.]+', required: true %>
     </div>
 
     <div class='col-12 mt-3 text-end'>
