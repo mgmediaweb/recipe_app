@@ -33,7 +33,7 @@ footer {
   flex-direction: column;
   font-size: 0.75rem;
   height: 100px;
-  justify-content: center;  
+  justify-content: center;
   width: 100%;
 
   h5 {
@@ -76,11 +76,11 @@ h1 {
   border-bottom: 1px solid darken($silver, 10%);
   color: dimgrey;
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   font-weight: bold;
   margin-bottom: $padding/2;
   padding: $padding/2 0;
-  
+
   p {
     margin: 0;
     padding: 0;
