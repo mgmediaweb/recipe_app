@@ -17,6 +17,7 @@ class RecipesTest < ApplicationSystemTestCase
     fill_in "Cooking time", with: @recipe.cooking_time
     fill_in "Description", with: @recipe.description
     fill_in "Name", with: @recipe.name
+    fill_in "Photo", with: @recipe.photo
     fill_in "Preparation time", with: @recipe.preparation_time
     check "Public" if @recipe.public
     fill_in "User", with: @recipe.user_id
@@ -33,6 +34,7 @@ class RecipesTest < ApplicationSystemTestCase
     fill_in "Cooking time", with: @recipe.cooking_time
     fill_in "Description", with: @recipe.description
     fill_in "Name", with: @recipe.name
+    fill_in "Photo", with: @recipe.photo
     fill_in "Preparation time", with: @recipe.preparation_time
     check "Public" if @recipe.public
     fill_in "User", with: @recipe.user_id

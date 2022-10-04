@@ -1,7 +1,40 @@
 <%= form_with(model: food) do |form| %>
+  <%= form.hidden_field :user_id, value: 1 %>
+  <% grouped_options = [
+    [
+      'Liquids',
+      [
+        ['Gallon', 'gal.'],
+        ['Quart', 'qt.'],
+        ['Liters', 'lt'],
+        ['Mililiters', 'ml.'],
+        ['Ounces', 'oz.'],
+      ]
+    ],
+    [
+      'Units',
+      [
+        ['Dozen', 'dz.'],
+        ['Cup', 'c.'],
+        ['Piece', 'pz.'],
+        ['Table Spoon', 'tbsp'],
+        ['Tea Spoon', 'tsp.'],
+        ['Unit', 'ut.'],
+      ]
+    ],
+    [
+      'Weight',
+      [
+        ['Grams', 'g.'],
+        ['Kilograms', 'kg.'],
+        ['Pounds', 'lb.'],
+      ]
+    ],
+  ] %>  
+
   <% if food.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+    <div style='color: red'>
+      <h2><%= pluralize(food.errors.count, 'error') %> prohibited this food from being saved:</h2>
 
       <ul>
         <% food.errors.each do |error| %>
@@ -11,32 +44,35 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="row">
 
-  <div>
-    <%= form.label :measure_unit, style: "display: block" %>
-    <%= form.text_field :measure_unit %>
-  </div>
+    <div class="col-12 mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Enter a food', required: true %>
+    </div>
 
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
+    <div class="col-12 col-md-6 mb-3">
+      <%= form.label :measure_unit, class: 'form-label' %>
+      <%= form.select :measure_unit, 
+        grouped_options_for_select(grouped_options),
+        {include_blank: 'Select'},
+        class: 'form-select',
+        required: true
+      %>
+    </div>
 
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.number_field :quantity %>
-  </div>
+    <div class="col-12 col-md-3 mb-3">
+      <%= form.label :quantity, class: 'form-label' %>
+      <%= form.text_field :quantity, class: 'form-control', pattern: '[0-9.]+', required: true %>
+    </div>    
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+    <div class="col-12 col-md-3 mb-3">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.text_field :price, class: 'form-control', pattern: '[0-9.]+', required: true %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class='col-12 mt-3 text-end'>
+      <%= form.submit 'Save', class: 'btn btn-primary text-light ms-3' %>
+    </div>
   </div>
 <% end %>
