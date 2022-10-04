@@ -18,7 +18,7 @@
           <tr>
             <th scope="col" class="text-center">Food</th>
             <th scope="col" class="text-center">Quantity</th>
-            <th scope="col" class="text-center">Value</th>
+            <th scope="col" class="text-center col-action">Value</th>
             <th scope="col" class="text-center col-action">Actions</th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@
             <tr>
               <td><%=food.name %></td>
               <td class="text-center"><%= "#{food.quantity} #{food.measure_unit}" %></td>
-              <td class="text-end"><%=number_to_currency(food.price, :unit => "$") %></td>
+              <td class="text-end col-action"><%=number_to_currency(food.price, :unit => "$") %></td>
               <td class="col-action display-flex">
                 <%= link_to edit_food_path(food), class: 'btn btn-sm btn-secondary', role: 'button' do %>
                   <i class="fas fa-pen" title="Edit"></i>
