@@ -1,32 +1,81 @@
-<div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
+<div id="<%= dom_id recipe %>" class="card bg-light mb-3">
+  <div class="card-body p-2">
 
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
+    <div class="d-flex align-items-center mb-3">
+      <% if recipe.photo != '' %>
+        <img src="<%= recipe.photo %>" alt="<%=recipe.name %>" class="image-circle" />
+      <% else %>
+        <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle" />
+      <% end %>
 
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
+      <h3 class="m-0 ms-2 p-0"><%= recipe.name %></h3>     
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
+    <div class="row mb-3">
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img src="<%=image_url('icon_prep_time.svg') %>" alt="Preparation Time" title="Preparation Time" class="icon-time" />
+        <h5 class="m-0 p-0 ms-3"><%= recipe.preparation_time %><small class="ms-1 text-secondary">min</small></h5>        
+      </div>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img src="<%=image_url('icon_cook_time.svg') %>" alt="Cooking Time" title="Cooking Time" class="icon-time" />
+        <h5 class="m-0 p-0 ms-3"><%= recipe.cooking_time %><small class="ms-1 text-secondary">min</small></h5>
+      </div>      
+    </div>
 
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
+    <div class="highlight">
+      <p>Description</p>
+    </div>
+    <p><%= recipe.description %></p>
 
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
+    <div class="highlight">
+      <p>Ingredients</p>
+      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+    </div>
 
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Food</th>
+            <th scope="col" class="text-center">Quantity</th>
+            <th scope="col" class="text-center">Value</th>
+            <th scope="col" class="text-center col-action">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Apple</td>
+            <td class="text-center">20g</td>
+            <td class="text-end">$100</td>
+            <td class="text-end col-action"></td>
+          </tr>
+          <tr>
+            <td>Pinneaple</td>
+            <td class="text-center">10g</td>
+            <td class="text-end">$10</td>
+            <td class="text-end col-action"></td>
+          </tr>
+          <tr>
+            <td>Chicken Breasts</td>
+            <td class="text-center">2 units</td>
+            <td class="text-end">$4</td>
+            <td class="text-center col-action">
+              <%= link_to '#', class: 'btn btn-sm btn-secondary', role: 'button' do %>
+                <i class="fas fa-pen" title="Edit"></i>
+              <% end %>
+              <%= link_to '#', class: 'btn btn-sm btn-danger text-light ms-1', role: 'button' do %>
+                <i class="fas fa-trash" title="Delete"></i>
+              <% end %>                
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <% if recipe.public %>
+      <div class="position-absolute top-0 end-0 pt-2 pe-2">
+        <i class="far fa-check-circle text-success"></i>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,14 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Recipes</h1>
+  <div class="row">
+    <div class="col-6">
+      <h1>Recipes</h1>
+    </div>
+    <div class="col-6 text-end">
+      <%= link_to "Add", new_recipe_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+    </div>    
+  </div>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card bg-light card-image">
+          <%= link_to recipe, class: 'position-absolute top-0 start-50 translate-middle' do %>
+            <% if recipe.photo != '' %>
+              <img src="<%= recipe.photo %>" alt="<%=recipe.name %>" class="image-circle image-link" />
+            <% else %>
+              <img src="<%= image_url('empty_icon.png') %>" alt="<%=recipe.name %>" class="image-circle" />
+            <% end %>
+          <% end %>
+          <div class="card-body p-2">
+            <h5 class="card-title text-center"><%=recipe.name %></h5>
+
+            <div class="w-100 d-flex align-items-end justify-content-between">
+              <div>
+                <p class="text-start m-0 p-0 text-secondary">Time</p>
+                <p class="text-start fw-bold m-0 p-0">
+                  <%=recipe.cooking_time %>
+                </p>              
+              </div>
+              <%= link_to '#', class: 'icon-link' do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New recipe", new_recipe_path %>

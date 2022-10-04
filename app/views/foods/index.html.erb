@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Foods</h1>
+  <div class="row">
+    <div class="col-6">
+      <h1>Foods</h1>
+    </div>
+    <div class="col-6 text-end">
+      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+    </div>    
+  </div>  
 
-<div id="foods">
-  <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
+  <div class="row">
+    <% @foods.each do |food| %>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card bg-light card-image">
+          <%= link_to food, class: 'position-absolute top-0 start-50 translate-middle' do %>
+            <img src="<%=image_url('empty_icon.png') %>" alt="@@@" class="image-circle" />
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title text-center">Card title</h5>
+            <p class="text-start m-0 p-0 text-secondary">
+              Time
+            </p>                        
+            <p class="text-start fw-bold m-0 p-0">
+              90
+            </p>            
+            <%= render food %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New food", new_food_path %>
+
