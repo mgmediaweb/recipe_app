@@ -5,6 +5,7 @@ one:
   preparation_time: 1
   cooking_time: 1
   description: MyText
+  photo: MyString
   public: false
   user: one
 
@@ -13,5 +14,6 @@ two:
   preparation_time: 1
   cooking_time: 1
   description: MyText
+  photo: MyString
   public: false
   user: two

@@ -1,14 +1,50 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Foods</h1>
+  <div class="row">
+    <div class="col-6">
+      <h1>Foods</h1>
+    </div>
+    <div class="col-6 text-end">
+      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+    </div>    
+  </div>  
 
-<div id="foods">
-  <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
+  <div class="row">
+    
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Food</th>
+            <th scope="col" class="text-center">Quantity</th>
+            <th scope="col" class="text-center col-action">Value</th>
+            <th scope="col" class="text-center col-action">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%=food.name %></td>
+              <td class="text-center"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+              <td class="text-end col-action"><%=number_to_currency(food.price, :unit => "$") %></td>
+              <td class="col-action display-flex">
+                <%= link_to edit_food_path(food), class: 'btn btn-sm btn-secondary', role: 'button' do %>
+                  <i class="fas fa-pen" title="Edit"></i>
+                <% end %>
+
+                <%= button_to food_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light ms-2'} do %>
+                  <i class="fas fa-trash-alt" title="Delete"></i>
+                <% end %>                
+              </td>
+            </tr>
+          <% end %>              
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </div>
 
-<%= link_to "New food", new_food_path %>
+
