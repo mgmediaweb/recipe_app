@@ -25,7 +25,9 @@
 
     <div class="highlight">
       <p>Ingredients</p>
-      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+      <%if can? :add, recipe%>
+        <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+      <%end%>
     </div>
 
     <div class="table-responsive">
