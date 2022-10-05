@@ -7,6 +7,11 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def public
+    @title = 'Lists of recipes'
+    @recipes = Recipe.all.where(public:true)
+  end
+
   # GET /recipes/1 or /recipes/1.json
   def show
     @title = 'Detail of a recipe'
