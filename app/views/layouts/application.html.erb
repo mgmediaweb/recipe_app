@@ -26,13 +26,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
+              <%= link_to 'Recipes', public_recipes_path, class: 'nav-link' %>
+            </li>
+            
+            <li class="nav-item">
+              <%= link_to 'My Recipes', recipes_url, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
               <%= link_to 'Foods', foods_url, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Recipes', recipes_url, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Public Recipes', public_recipes_path, class: 'nav-link' %>
             </li>
             <li class="nav-item mt-2 px-4 d-none d-md-block">
             |
