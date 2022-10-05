@@ -32,10 +32,10 @@
               <td><%=food.name %></td>
               <td class="text-center wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
               <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
-              <td class="wd-120 display-flex">
+              <td class="wd-140 display-flex">
               <%if can? :read, food%>
-                <%= link_to food_path(food), class: 'btn btn-sm btn-primary', role: 'button' do %>
-                  <i class="fas fa-eye" title="Edit"></i>
+                <%= link_to food_path(food), class: 'btn btn-sm btn-primary text-light', role: 'button' do %>
+                  <i class="fas fa-eye" title="Show"></i>
                 <% end %>
               <%end%>
               <%if can? :edit, food%>
