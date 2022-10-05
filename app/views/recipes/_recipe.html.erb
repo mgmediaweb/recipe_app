@@ -25,7 +25,14 @@
 
     <div class="highlight">
       <p>Ingredients</p>
-      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+      <button
+        type="button"
+        class="btn btn-sm btn-primary text-light btn-href"
+        data-bs-toggle="modal"
+        data-bs-target="#ingredientModal
+      ">
+        Add
+      </button>
     </div>
 
     <div class="table-responsive">
@@ -33,37 +40,24 @@
         <thead>
           <tr>
             <th scope="col" class="text-center">Food</th>
-            <th scope="col" class="text-center">Quantity</th>
-            <th scope="col" class="text-center">Value</th>
-            <th scope="col" class="text-center col-action">Actions</th>
+            <th scope="col" class="text-center wd-120">Quantity</th>
+            <th scope="col" class="text-center wd-120">Value</th>
+            <th scope="col" class="text-center wd-60">&nbsp</th>
           </tr>
         </thead>
         <tbody>
+<% @recipefoods.each do |food| %>
           <tr>
-            <td>Apple</td>
-            <td class="text-center">20g</td>
-            <td class="text-end">$100</td>
-            <td class="text-end col-action"></td>
-          </tr>
-          <tr>
-            <td>Pinneaple</td>
-            <td class="text-center">10g</td>
-            <td class="text-end">$10</td>
-            <td class="text-end col-action"></td>
-          </tr>
-          <tr>
-            <td>Chicken Breasts</td>
-            <td class="text-center">2 units</td>
-            <td class="text-end">$4</td>
-            <td class="text-center col-action">
-              <%= link_to '#', class: 'btn btn-sm btn-secondary', role: 'button' do %>
-                <i class="fas fa-pen" title="Edit"></i>
-              <% end %>
-              <%= link_to '#', class: 'btn btn-sm btn-danger text-light ms-1', role: 'button' do %>
-                <i class="fas fa-trash" title="Delete"></i>
-              <% end %>                
+            <td><%=food.name %></td>
+            <td class="text-end wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+            <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
+            <td class="text-end wd-60">
+              <%= button_to recipe_recipefood_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light'} do %>
+                <i class="fas fa-trash-alt" title="Delete"></i>
+              <% end %>                             
             </td>
           </tr>
+<% end %>          
         </tbody>
       </table>
     </div>

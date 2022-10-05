@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :recipes
+  resources :recipes do
+    resources :recipefood, only: %i[create destroy]
+  end
   resources :foods
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

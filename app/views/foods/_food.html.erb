@@ -1,27 +1,18 @@
-<div id="<%= dom_id food %>">
-  <p>
-    <strong>Name:</strong>
-    <%= food.name %>
-  </p>
+<div class="row">
 
-  <p>
-    <strong>Measure unit:</strong>
-    <%= food.measure_unit %>
-  </p>
+  <div class="col-12 col-md-6 mb-3">
+    <span class="badge bg-dark">Food</span>
+    <h1><%= food.name %></h1>
+  </div>
 
-  <p>
-    <strong>Price:</strong>
-    <%= food.price %>
-  </p>
+  <div class="col-6 col-md-3 text-center mb-3">
+    <span class="badge bg-dark">Price</span>
+    <p><%= food.price %></p>
+  </div>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= food.quantity %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= food.user_id %>
-  </p>
+  <div class="col-6 col-md-3 text-center mb-3">
+    <span class="badge bg-dark">Quantity</span>
+    <p><%= "#{food.quantity} #{food.measure_unit}" %></p>
+  </div>
 
 </div>
