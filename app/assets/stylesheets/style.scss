@@ -57,91 +57,12 @@ h1 {
   font-size: 1.5rem !important;
 }
 
-.comment {
-  color: dimgray;
-  font-size: 0.8em;
-  font-style: italic;
-}
-
-.display-flex {
-  align-items: center;
-  display: flex;
-  justify-content: end;
-}
-
 .btn-href {
   text-decoration: none !important;
 
   &:hover {
     text-decoration: none !important;
   }
-}
-
-.wd {
-  &-60 {
-    width: 60px;
-  }
-
-  &-80 {
-    width: 80px;
-  }
-
-  &-100 {
-    width: 100px;
-  }
-
-  &-120 {
-    width: 120px;
-  }
-}
-
-.highlight {
-  align-items: flex-end;
-  border-bottom: 1px solid darken($silver, 10%);
-  color: dimgrey;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  margin-bottom: $padding/2;
-  padding: $padding/2 0;
-
-  p {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.image-link {
-  align-items: center;
-  background-color: rgba($primary, 0.5);
-  color: white;
-  display: flex;
-  font-size: 1.5rem;
-  height: $image-circle-size;
-  justify-content: center;
-  opacity: 0;
-  transition: $transition;
-  user-select: none;
-  width: $image-circle-size;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 1;
-    transition: $transition;
-  }
-}
-
-.image-circle {
-  background: $silver url('empty_icon.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border: $silver solid 2px;
-  border-radius: $image-circle-size/2;
-  height: $image-circle-size;
-  overflow: hidden;
-  transition: $transition;
-  width: $image-circle-size;
 }
 
 .card-image {
@@ -172,9 +93,97 @@ h1 {
   }
 }
 
+.comment {
+  color: dimgray;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.display-flex {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+}
+
+.highlight {
+  align-items: flex-end;
+  border-bottom: 1px solid darken($silver, 10%);
+  color: dimgrey;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: $padding/2;
+  padding: $padding/2 0;
+  
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.image-link {
+  align-items: center;
+  background-color: rgba($primary, 0.5);
+  color: white;
+  display: flex;
+  font-size: 1.5rem;
+  height: $image-circle-size;
+  justify-content: center;
+  opacity: 0;
+  transition: $transition;
+  user-select: none;
+  width: $image-circle-size;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: $transition;
+  }
+}
+
+.image-circle {
+  background: $silver url('empty_icon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: $silver solid 2px;
+  border-radius: $image-circle-size/2;
+  height: $image-circle-size;
+  overflow: hidden;
+  transition: $transition;
+  width: $image-circle-size;
+}
+
 .icon-time {
   height: 48px;
   width: 48px;
+}
+
+.main-logo {
+  height: 50px;
+  width: auto;
+}
+
+.wd {
+  &-60 {
+    width: 60px;
+  }
+
+  &-80 {
+    width: 80px;
+  }
+
+  &-100 {
+    width: 100px;
+  }
+
+  &-120 {
+    width: 120px;
+  }
+
+  &-140 {
+    width: 140px;
+  }  
 }
 
 @media only screen and (min-width: 768px) {

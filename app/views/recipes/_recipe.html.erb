@@ -25,17 +25,26 @@
 
     <div class="highlight">
       <p>Ingredients</p>
+      <div>
+        <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary btn-href"
+        data-bs-toggle="modal"
+        data-bs-target="#shoppingListModal
+        ">
+          Shopping List
+        </button>      
       <%if can? :add, recipe%>
         <button
         type="button"
-        class="btn btn-sm btn-primary text-light btn-href"
+        class="btn btn-sm btn-primary text-light btn-href ms-2"
         data-bs-toggle="modal"
         data-bs-target="#ingredientModal
         ">
           Add
         </button>
       <%end%>
-      
+      </div>
     </div>
 
     <div class="table-responsive">
@@ -50,10 +59,11 @@
         </thead>
         <tbody>
 <% @recipefoods.each do |food| %>
+<% totline = food.quantity * food.price %>
           <tr>
             <td><%=food.name %></td>
             <td class="text-end wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
-            <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
+            <td class="text-end wd-120"><%=number_to_currency(totline, :unit => "$") %></td>
             <td class="text-end wd-60">
             <%if can? :destroy, recipe%>
               <%= button_to recipe_recipefood_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light'} do %>
