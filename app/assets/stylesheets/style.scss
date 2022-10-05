@@ -57,10 +57,16 @@ h1 {
   font-size: 1.5rem !important;
 }
 
+.comment {
+  color: dimgray;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
 .display-flex {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 
 .btn-href {
@@ -71,8 +77,22 @@ h1 {
   }
 }
 
-.col-action {
-  width: 120px;
+.wd {
+  &-60 {
+    width: 60px;
+  }
+
+  &-80 {
+    width: 80px;
+  }
+
+  &-100 {
+    width: 100px;
+  }
+
+  &-120 {
+    width: 120px;
+  }
 }
 
 .highlight {

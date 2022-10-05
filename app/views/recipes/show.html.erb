@@ -18,3 +18,35 @@
     <%end%>
   </div>
 </div>  
+
+<!-- Add ingredient Modal -->
+<div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <%= form_with url: recipe_recipefood_index_path(@recipe) do |form| %>    
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add ingredient to recipe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <tbody>
+<% @foods.each do |food| %>
+              <tr>
+                <td>
+                  <input name="ingredient[]" type="checkbox" value="<%=food.id %>" class="form-check-input" />
+                </td>
+                <td><%=food.name %></td>
+                <td class="text-end"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+              </tr>
+<% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary text-white">Save changes</button>
+        </div>
+      <% end %>        
+    </div>
+  </div>
+</div> 

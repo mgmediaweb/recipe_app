@@ -1,21 +1,30 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /recipes or /recipes.json
   def index
+    @title = 'Lists of recipes'
     @recipes = Recipe.all
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @title = 'Detail of a recipe'
+    @foods = Food.all
+    @recipefoods = Recipe.find(params[:id]).foods
+  end
 
   # GET /recipes/new
   def new
+    @title = 'Create a recipe'
     @recipe = Recipe.new
   end
 
   # GET /recipes/1/edit
-  def edit; end
+  def edit
+    @title = 'Edit a recipe'
+  end
 
   # POST /recipes or /recipes.json
   def create
