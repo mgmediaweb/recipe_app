@@ -5,9 +5,12 @@
     <div class="col-6">
       <h1>Foods</h1>
     </div>
-    <div class="col-6 text-end">
-      <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
-    </div>    
+    <%if user_signed_in?%>
+      <div class="col-6 text-end">
+        <%= link_to "Add", new_food_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+      </div>  
+    <%end%>
+      
   </div>  
 
   <div class="row">
@@ -29,13 +32,22 @@
               <td><%=food.name %></td>
               <td class="text-center wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
               <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
-              <td class="display-flex wd-120">
-                <%= link_to edit_food_path(food), class: 'btn btn-sm btn-secondary', role: 'button' do %>
+              <td class="wd-120 display-flex">
+              <%if can? :read, food%>
+                <%= link_to food_path(food), class: 'btn btn-sm btn-primary', role: 'button' do %>
+                  <i class="fas fa-eye" title="Edit"></i>
+                <% end %>
+              <%end%>
+              <%if can? :edit, food%>
+                <%= link_to edit_food_path(food), class: 'btn btn-sm btn-secondary ms-2', role: 'button' do %>
                   <i class="fas fa-pen" title="Edit"></i>
                 <% end %>
+              <%end%>
+              <%if can? :destroy, food%>
                 <%= button_to food_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light ms-2'} do %>
-                  <i class="fas fa-trash-alt" title="Delete"></i>
-                <% end %>                
+                    <i class="fas fa-trash-alt" title="Delete"></i>
+                <% end %> 
+              <%end%>
               </td>
             </tr>
           <% end %>              

@@ -25,14 +25,17 @@
 
     <div class="highlight">
       <p>Ingredients</p>
-      <button
+      <%if can? :add, recipe%>
+        <button
         type="button"
         class="btn btn-sm btn-primary text-light btn-href"
         data-bs-toggle="modal"
         data-bs-target="#ingredientModal
-      ">
-        Add
-      </button>
+        ">
+          Add
+        </button>
+      <%end%>
+      
     </div>
 
     <div class="table-responsive">
@@ -52,9 +55,11 @@
             <td class="text-end wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
             <td class="text-end wd-120"><%=number_to_currency(food.price, :unit => "$") %></td>
             <td class="text-end wd-60">
+            <%if can? :destroy, recipe%>
               <%= button_to recipe_recipefood_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light'} do %>
                 <i class="fas fa-trash-alt" title="Delete"></i>
-              <% end %>                             
+              <% end %>  
+            <%end%>                           
             </td>
           </tr>
 <% end %>          

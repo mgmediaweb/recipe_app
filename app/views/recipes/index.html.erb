@@ -5,9 +5,11 @@
     <div class="col-6">
       <h1>Recipes</h1>
     </div>
-    <div class="col-6 text-end">
-      <%= link_to "Add", new_recipe_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
-    </div>    
+    <%if user_signed_in?%>
+      <div class="col-6 text-end">
+        <%= link_to "Add", new_recipe_path, class: 'btn btn-sm btn-primary text-light btn-href', role: 'button' %>
+      </div>  
+    <%end%>
   </div>
 
   <div class="row">
@@ -30,10 +32,11 @@
                   <%=recipe.cooking_time %>
                 </p>              
               </div>
-
-              <%= button_to recipe_path(recipe), { method: :delete, data: { turbo: false }, class: 'btn btn-white text-danger'} do %>
-                <i class="fas fa-trash-alt" title="Delete"></i>
-              <% end %>
+              <%if can? :destroy, recipe%>
+                <%= button_to recipe_path(recipe), { method: :delete, data: { turbo: false }, class: 'btn btn-white text-danger'} do %>
+                  <i class="fas fa-trash-alt" title="Delete"></i>
+                <% end %>
+              <%end%>
             </div>
           </div>
         </div>
