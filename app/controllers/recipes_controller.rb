@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def public
     @title = 'Lists of recipes'
-    @recipes = Recipe.all.where(public:true)
+    @recipes = Recipe.all.where(public: true)
   end
 
   # GET /recipes/1 or /recipes/1.json
