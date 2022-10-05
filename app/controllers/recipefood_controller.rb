@@ -16,7 +16,7 @@ class RecipefoodController < ApplicationController
     recipe = params[:id]
     p "@@@ destroy #{food}"
     p "@@@ redirect #{recipe}"
-    Recipefood.find_by(food_id: food, recipe_id: recipe).destroy()
+    Recipefood.find_by(food_id: food, recipe_id: recipe).destroy
     redirect_to recipe_path(recipe)
   end
 end

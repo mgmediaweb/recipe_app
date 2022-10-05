@@ -58,7 +58,7 @@ h1 {
 }
 
 .comment {
-  color:dimgray;
+  color: dimgray;
   font-size: 0.8em;
   font-style: italic;
 }
@@ -80,13 +80,16 @@ h1 {
 .wd {
   &-60 {
     width: 60px;
-  }   
+  }
+
   &-80 {
     width: 80px;
-  }  
+  }
+
   &-100 {
     width: 100px;
   }
+  
   &-120 {
     width: 120px;
   }
