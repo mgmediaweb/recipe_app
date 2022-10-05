@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipefood, only: %i[create destroy]
   end
+  get '/public_recipes', to: 'recipes#public'
   resources :foods
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'foods#index'
+  root 'recipes#public'
 end
