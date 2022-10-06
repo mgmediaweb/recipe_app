@@ -6,4 +6,8 @@ module ApplicationHelper
     show_image = image if image != ''
     show_image
   end
+
+  def msj_empty 
+    '- There are no items to display -'
+  end
 end

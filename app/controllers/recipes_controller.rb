@@ -3,8 +3,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @title = 'Lists of recipes'
-    @recipes = Recipe.where(user_id: current_user.id).order(created_at: :desc)
+    @title = 'Lists of my recipes'
+    @recipes = Recipe.where(user_id: current_user).order(created_at: :desc)
   end
 
   def public
