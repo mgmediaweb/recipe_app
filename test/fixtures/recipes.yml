@@ -1,12 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Pizza
   preparation_time: 1
   cooking_time: 1
-  description: MyText
-  photo: MyString
-  public: false
+  description: Description
+  photo: pizza.png
+  public: true
   user: one
 
 two:
@@ -16,4 +16,4 @@ two:
   description: MyText
   photo: MyString
   public: false
-  user: two
+  user: velo

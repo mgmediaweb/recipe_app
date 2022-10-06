@@ -58,8 +58,9 @@
           </tr>
         </thead>
         <tbody>
-<% @recipefoods.each do |food| %>
-<% totline = food.quantity * food.price %>
+<% if @recipefoods.length.positive? %>
+  <% @recipefoods.each do |food| %>
+  <% totline = food.quantity * food.price %>
           <tr>
             <td><%=food.name %></td>
             <td class="text-end wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
@@ -72,7 +73,12 @@
             <%end%>                           
             </td>
           </tr>
-<% end %>          
+  <% end %>
+<% else %>
+          <tr>
+            <td colspan="4" class="col-12 text-center text-secondary py-5"><%=msj_empty %></td>
+          </tr>
+<% end %>  
         </tbody>
       </table>
     </div>
