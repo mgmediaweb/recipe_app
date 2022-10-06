@@ -74,7 +74,8 @@
         <div class="modal-body">
           <table class="table">
             <tbody>
-<% @foods.each do |food| %>
+<% if @foods.length.positive? %>            
+  <% @foods.each do |food| %>
               <tr>
                 <td>
                   <input name="ingredient[]" type="checkbox" value="<%=food.id %>" class="form-check-input" />
@@ -82,12 +83,17 @@
                 <td><%=food.name %></td>
                 <td class="text-end"><%= "#{food.quantity} #{food.measure_unit}" %></td>
               </tr>
-<% end %>
+  <% end %>
+<% else %>
+          <tr>
+            <td colspan="4" class="col-12 text-center text-secondary py-5"><%=msj_empty %></td>
+          </tr>
+<% end %> 
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary text-white">Save changes</button>
+          <button type="submit" class="btn btn-primary text-white <%= 'disabled' unless @foods.length.positive? %>">Save changes</button>
         </div>
       <% end %>        
     </div>
