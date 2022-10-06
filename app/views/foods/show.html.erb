@@ -1,0 +1,22 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @food %>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <%= link_to "< Back to foods", foods_path %> 
+      <%if can? :edit, @food%>
+        |
+        <%= link_to "Edit this food", edit_food_path(@food) %> 
+      <%end%>
+
+    </div>
+    <%if can? :destroy, @food%>
+      <div class="col-12 col-md-6 text-end">
+        <%= button_to "Delete", @food, method: :delete, class: 'btn btn-danger text-light' %>
+      </div>
+    <%end%>
+    
+  </div>
+</div> 

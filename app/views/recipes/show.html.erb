@@ -1,0 +1,101 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @recipe %>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <%= link_to "< Back to recipes", recipes_path %> 
+      <%if can? :edit, @recipe%>
+        |
+        <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %>
+      <%end%>
+    </div>
+    <%if can? :destroy, @recipe%>
+      <div class="col-12 col-md-6 text-end">
+        <%= button_to "Delete", @recipe, method: :delete, class: 'btn btn-danger text-light' %>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<!-- Shopping List Modal -->
+<div class="modal fade" id="shoppingListModal" tabindex="-1" aria-labelledby="shoppingListModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Shopping List <span class="comment">(<%= @recipefoods.length %> articles)</span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Food</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-center">Value</th>
+              <th scope="col" class="text-center">Total</th>
+            </tr>
+          </thead>        
+          <tbody>
+<% total = 0 %>
+<% @recipefoods.each do |food| %>
+<% totline = food.quantity * food.price %>
+<% total += totline %>
+            <tr>
+              <td><%=food.name %></td>
+              <td class="text-end"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+              <td class="text-end"><%= number_to_currency(food.price, :unit => "$") %></td>
+              <td class="text-end"><%= number_to_currency(totline, :unit => "$") %></td>
+            </tr>
+<% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="3">Total</th>
+              <th scope="col" class="text-end"><%= number_to_currency(total, :unit => "$") %></th>
+            </tr>
+          </tfoot>            
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add ingredient Modal -->
+<div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <%= form_with url: recipe_recipefood_index_path(@recipe) do |form| %>    
+        <div class="modal-header">
+          <h5 class="modal-title">Add ingredients to recipe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <tbody>
+<% if @foods.length.positive? %>            
+  <% @foods.each do |food| %>
+              <tr>
+                <td>
+                  <input name="ingredient[]" type="checkbox" value="<%=food.id %>" class="form-check-input" />
+                </td>
+                <td><%=food.name %></td>
+                <td class="text-end"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+              </tr>
+  <% end %>
+<% else %>
+          <tr>
+            <td colspan="4" class="col-12 text-center text-secondary py-5"><%=msj_empty %></td>
+          </tr>
+<% end %> 
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary text-white <%= 'disabled' unless @foods.length.positive? %>">Save changes</button>
+        </div>
+      <% end %>        
+    </div>
+  </div>
+</div> 

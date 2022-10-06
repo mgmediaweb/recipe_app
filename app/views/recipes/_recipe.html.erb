@@ -1,0 +1,92 @@
+<div id="<%= dom_id recipe %>" class="card bg-light mb-3">
+  <div class="card-body p-2">
+
+    <div class="d-flex align-items-center mb-3">
+      <div class="image-circle" style="background-image: url('<%= show_bg_image(recipe.photo) %>')" ></div>      
+
+      <h3 class="m-0 ms-2 p-0"><%= recipe.name %></h3>     
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img src="<%=image_url('icon_prep_time.svg') %>" alt="Preparation Time" title="Preparation Time" class="icon-time" />
+        <h5 class="m-0 p-0 ms-3"><%= recipe.preparation_time %><small class="ms-1 text-secondary">min</small></h5>        
+      </div>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img src="<%=image_url('icon_cook_time.svg') %>" alt="Cooking Time" title="Cooking Time" class="icon-time" />
+        <h5 class="m-0 p-0 ms-3"><%= recipe.cooking_time %><small class="ms-1 text-secondary">min</small></h5>
+      </div>      
+    </div>
+
+    <div class="highlight">
+      <p>Description</p>
+    </div>
+    <p><%= recipe.description %></p>
+
+    <div class="highlight">
+      <p>Ingredients</p>
+      <div>
+        <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary btn-href"
+        data-bs-toggle="modal"
+        data-bs-target="#shoppingListModal
+        ">
+          Shopping List
+        </button>      
+      <%if can? :add, recipe%>
+        <button
+        type="button"
+        class="btn btn-sm btn-primary text-light btn-href ms-2"
+        data-bs-toggle="modal"
+        data-bs-target="#ingredientModal
+        ">
+          Add
+        </button>
+      <%end%>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Food</th>
+            <th scope="col" class="text-center wd-120">Quantity</th>
+            <th scope="col" class="text-center wd-120">Value</th>
+            <th scope="col" class="text-center wd-60">&nbsp</th>
+          </tr>
+        </thead>
+        <tbody>
+<% if @recipefoods.length.positive? %>
+  <% @recipefoods.each do |food| %>
+  <% totline = food.quantity * food.price %>
+          <tr>
+            <td><%=food.name %></td>
+            <td class="text-end wd-120"><%= "#{food.quantity} #{food.measure_unit}" %></td>
+            <td class="text-end wd-120"><%=number_to_currency(totline, :unit => "$") %></td>
+            <td class="text-end wd-60">
+            <%if can? :destroy, recipe%>
+              <%= button_to recipe_recipefood_path(food), { method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-danger text-light'} do %>
+                <i class="fas fa-trash-alt" title="Delete"></i>
+              <% end %>  
+            <%end%>                           
+            </td>
+          </tr>
+  <% end %>
+<% else %>
+          <tr>
+            <td colspan="4" class="col-12 text-center text-secondary py-5"><%=msj_empty %></td>
+          </tr>
+<% end %>  
+        </tbody>
+      </table>
+    </div>
+
+    <% if recipe.public %>
+      <div class="position-absolute top-0 end-0 pt-2 pe-2">
+        <i class="far fa-check-circle text-success"></i>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="container mt-2">
+  <h1>Edit food</h1>
+  <%= render "form", food: @food %>
+  <div>
+    <%= link_to "< Back to foods", foods_path %> |
+    <%= link_to "Show this food", @food %>
+  </div>
+</div>
